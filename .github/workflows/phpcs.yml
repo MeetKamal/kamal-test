@@ -45,7 +45,6 @@ jobs:
 
       - name: Run step if any file(s) in the docs folder change
         shell: bash
-        working-directory: project
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
           echo "One or more files in the docs folder has changed."
