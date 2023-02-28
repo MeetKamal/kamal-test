@@ -30,6 +30,12 @@ jobs:
         shell: bash
         working-directory: standard
         run: composer require "magento/magento-coding-standard"
+
+      - name: Register Coding Standard
+        shell: bash
+        working-directory: standard
+        run: vendor/bin/phpcs --config-set installed_paths ${{ github.workspace }}/standard/vendor/magento/magento-coding-standard,${{ github.workspace }}/standard/vendor/phpcompatibility/php-compatibility
+
       # Example 2
       - name: Get changed files in the app folder
         id: changed-files-specific
