@@ -20,6 +20,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2  # OR "2" -> To retrieve the preceding commit.
+          path: project
 
       - name: Create Standard Directory
         shell: bash
@@ -44,7 +45,7 @@ jobs:
 
       - name: Run step if any file(s) in the docs folder change
         shell: bash
-        working-directory: standard
+        working-directory: project
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
           echo "One or more files in the docs folder has changed."
