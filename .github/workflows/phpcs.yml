@@ -50,32 +50,34 @@ on:
     branches:
       - main
 
-runs:
-  using: composite
-  steps:
-    - name: Checkout Project
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 2
-        path: project
 
-    - name: Create Standard Directory
-      shell: bash
-      run: mkdir standard
-
-    - name: Set PHP Version
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: ${{ inputs.php_version }}
-        tools: composer:v${{ inputs.composer_version }}
-        coverage: none
-
-    - name: Install Coding Standard
-      shell: bash
-      working-directory: standard
-      run: composer require "magento/magento-coding-standard"
 
 jobs:
+  runs:
+    using: composite
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+          path: project
+
+      - name: Create Standard Directory
+        shell: bash
+        run: mkdir standard
+
+      - name: Set PHP Version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ inputs.php_version }}
+          tools: composer:v${{ inputs.composer_version }}
+          coverage: none
+
+      - name: Install Coding Standard
+        shell: bash
+        working-directory: standard
+        run: composer require "magento/magento-coding-standard"
+
   build:
     runs-on: ubuntu-latest  # windows-latest | macos-latest
     name: Test changed-files
