@@ -46,7 +46,6 @@ public function getConfig()
 {
 	
 	echo "11";
-
 	
 //This is for testing sdjvn
 $ExtrafeeConfig = [];
