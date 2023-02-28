@@ -39,11 +39,13 @@ jobs:
       # Example 2
       - name: Get changed files in the app folder
         id: changed-files-specific
+        working-directory: project
         uses: tj-actions/changed-files@v35
         with:
           files: app/**.php # Alternatively using: `docs/**` or `docs`
 
       - name: Run step if any file(s) in the docs folder change
+        working-directory: project
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
           echo "One or more files in the docs folder has changed."
