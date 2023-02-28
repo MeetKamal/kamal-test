@@ -44,7 +44,8 @@ $this->dataHelper = $dataHelper;
     //There is new rgjknrfk
 public function getConfig()
 {
-	
+
+
 	echo "11";
 
     echo "dsds ";
