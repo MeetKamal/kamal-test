@@ -44,6 +44,9 @@ $this->dataHelper = $dataHelper;
     //There is new rgjknrfk
 public function getConfig()
 {
+	
+	echo "11";
+	
 //This is for testing sdjvn
 $ExtrafeeConfig = [];
  $enabled = $this->dataHelper->isModuleEnabled();

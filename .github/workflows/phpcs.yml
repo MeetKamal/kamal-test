@@ -33,29 +33,14 @@ jobs:
           done
 
       # Example 2
-      - name: Get changed files in the docs folder
+      - name: Get changed files in the app folder
         id: changed-files-specific
         uses: tj-actions/changed-files@v35
         with:
-          files: docs/*.{js,html}  # Alternatively using: `docs/**` or `docs`
+          files: app/**.php # Alternatively using: `docs/**` or `docs`
 
       - name: Run step if any file(s) in the docs folder change
         if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
           echo "One or more files in the docs folder has changed."
           echo "List all the files that have changed: ${{ steps.changed-files-specific.outputs.all_changed_files }}"
-      
-      # Example 3
-      - name: Get changed js files excluding the docs folder
-        id: changed-files-excluded
-        uses: tj-actions/changed-files@v35
-        with:
-          files: |
-            **/*.js
-          files_ignore: docs/** # Alternatively using: `docs`
-
-      - name: Run step if any other js file(s) change
-        if: steps.changed-files-excluded.outputs.any_changed == 'true'
-        run: |
-          echo "One or more js files not in the doc folder has changed."
-          echo "List all the files that have changed: ${{ steps.changed-files-excluded.outputs.all_changed_files }}"
