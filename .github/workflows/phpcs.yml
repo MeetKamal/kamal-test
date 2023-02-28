@@ -5,12 +5,12 @@ on:
   # (Note: To compare changes between the current commit to the last pushed remote commit of the main branch set `since_last_remote_commit: true`)
   push:
     branches:
-      - kamal
+      - main
   # Compare the last commit of main -> to the current commit of a PR branch.
   # (Note: To compare changes between the current commit to the last pushed remote commit of a PR branch set `since_last_remote_commit: true`)
   pull_request:
     branches:
-      - kamal
+      - main
 
 jobs:
   build:
