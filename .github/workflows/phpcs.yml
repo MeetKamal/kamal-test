@@ -49,6 +49,6 @@ jobs:
         run: |
           echo "One or more files in the docs folder has changed."
           for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}; do
-            php vendor/bin/phpcs --standard=PSR1 $file
+            vendor/bin/phpcs --standard=PSR1 $file
             echo "$file was changed"
           done
