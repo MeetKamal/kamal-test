@@ -1,43 +1,5 @@
 name: CI
 
-inputs:
-  php_version:
-    required: true
-    default: "8.1"
-    description: "PHP version used to do the coding standard check."
-
-  composer_version:
-    required: true
-    default: "2"
-    description: "The version of composer to use."
-
-  path:
-    required: true
-    default: "app/code"
-    description: "The directory (relative to the project root) in which the coding standard will be checked. Used when the event is not a pull request."
-
-  version:
-    required: false
-    default: "31"
-    description: "The version of the coding standard to use. If not provided, will use the latest version."
-
-  severity:
-    required: false
-    default: "5"
-    description: "The minimum severity required to display an error or warning (default: 5)"
-
-  warning_severity:
-    required: false
-    default: "5"
-    description: "The minimum severity required to display a warning"
-
-  error_severity:
-    required: false
-    default: "5"
-    description: "The minimum severity required to display an error"
-
-
-
 on:
   # Compare the preceeding commit -> to the current commit of the main branch.
   # (Note: To compare changes between the current commit to the last pushed remote commit of the main branch set `since_last_remote_commit: true`)
@@ -49,9 +11,6 @@ on:
   pull_request:
     branches:
       - main
-
-
-
 jobs:
   runs:
     using: composite
