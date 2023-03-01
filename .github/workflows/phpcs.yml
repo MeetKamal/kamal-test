@@ -42,6 +42,12 @@ jobs:
         with:
           files: app/**.php # Alternatively using: `docs/**` or `docs`
 
+      - name: Check for changes
+        id: checkForChanges
+        run: |
+          echo "::set-output name=grepValue::$( git diff --name-only ${{ github.event.before }} ${{ github.sha }}  )"
+  
+
       - name: Run step if any file(s) in the docs folder change
         shell: bash
         if: steps.changed-files-specific.outputs.any_changed == 'true'

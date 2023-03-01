@@ -46,8 +46,6 @@ public function getConfig()
 {
 
 
-
-
 	echo "11";
 
 
