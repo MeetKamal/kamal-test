@@ -55,7 +55,7 @@ jobs:
       - name: Get changed lines
         id: changedLines
         run: |
-          CHANGED_LINES=$(git diff HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' | wc -l)
+          CHANGED_LINES=$(git diff app | grep -v '^@@' | sed 's/^[-+ ]*//g' | wc -l)
           echo "Changed lines: $CHANGED_LINES"
 
       - name: Run step if any file(s) in the docs folder change

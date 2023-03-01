@@ -46,7 +46,6 @@ public function getConfig()
 {
     echo "11";
     echo "dsd s ";
-
     echo "fff";
 
 
