@@ -17,18 +17,14 @@ jobs:
     name: ESLint
     runs-on: ubuntu-latest
     steps:
-      - name: Install Coding Standard
-        shell: bash
-        working-directory: standard
-        run: composer require "technote-space/get-diff-action"
-
-      - name: Install Coding Standard 2
       - uses: actions/checkout@v2
       - uses: technote-space/get-diff-action@v6
         with:
           PATTERNS: |
-            +(app)/**
-
+            +(src|__tests__)/**/*.ts
+          FILES: |
+            yarn.lock
+            .eslintrc
       - name: Install Package dependencies
         run: yarn install
         if: env.GIT_DIFF
@@ -40,48 +36,3 @@ jobs:
         # Check only if there are differences in the source code (Run a lint on all files if there are changes to yarn.lock or .eslintrc)
         run: yarn lint
         if: env.GIT_DIFF && env.MATCHED_FILES
-
-  build:
-    runs-on: ubuntu-latest  # windows-latest | macos-latest
-    name: Test changed-files
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 2  # OR "2" -> To retrieve the preceding commit.
-
-      - name: Create Standard Directory
-        shell: bash
-        run: mkdir standard
-
-      - name: Install Coding Standard
-        shell: bash
-        working-directory: standard
-        run: composer require "magento/magento-coding-standard"
-
-      - name: Register Coding Standard
-        shell: bash
-        working-directory: standard
-        run: vendor/bin/phpcs --config-set installed_paths ${{ github.workspace }}/standard/vendor/magento/magento-coding-standard,${{ github.workspace }}/standard/vendor/phpcompatibility/php-compatibility
-
-      # Example 2
-      - name: Get changed files in the app folder
-        id: changed-files-specific
-        uses: tj-actions/changed-files@v35
-        with:
-          files: app/**.php # Alternatively using: `docs/**` or `docs`
-
-      - name: Check for changes
-        id: checkForChanges
-        run: |
-          echo "::set-output name=grepValue::$( git diff --name-only ${{ github.event.before }} ${{ github.sha }}  )"
-  
-
-      - name: Run step if any file(s) in the docs folder change
-        shell: bash
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
-        run: |
-          echo "One or more files in the docs folder has changed."
-          for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}; do
-            php ../standard/vendor/bin/phpcs $file
-            echo "$file was changed"
-          done
