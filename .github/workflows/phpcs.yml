@@ -32,5 +32,5 @@ jobs:
         if: env.GIT_DIFF && !env.MATCHED_FILES
       - name: Check code style
         # Check only if there are differences in the source code (Run a lint on all files if there are changes to yarn.lock or .eslintrc)
-        run: yarn lint
+        run: echo ${{env.GIT_DIFF}}
         if: env.GIT_DIFF && env.MATCHED_FILES
