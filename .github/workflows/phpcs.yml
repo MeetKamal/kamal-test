@@ -54,9 +54,8 @@ jobs:
 
       - name: Get changed lines
         id: changedLines
-        run: |
-          CHANGED_LINES=$(git diff app | grep -v '^@@' | sed 's/^[-+ ]*//g' | wc -l)
-          echo "Changed lines: $CHANGED_LINES"
+        run: echo $(git diff --unified=0 HEAD~ HEAD | grep '^+' | sed 's/^+//')
+
 
       - name: Run step if any file(s) in the docs folder change
         shell: bash
