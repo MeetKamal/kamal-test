@@ -54,6 +54,8 @@ jobs:
 
       - name: Get changed lines
         id: changedLines
+        with:
+          path: project
         run: echo $(git diff --unified=0 HEAD~ HEAD | grep '^+' | sed 's/^+//')
 
 
