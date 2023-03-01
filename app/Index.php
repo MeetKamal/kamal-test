@@ -44,14 +44,9 @@ $this->dataHelper = $dataHelper;
     //There is new rgjknrfk
 public function getConfig()
 {
+    echo "11";
 
-
-
-	echo "11";
-
-
-
-    echo "dsds ";
+    echo "dsd s ";
 
 	
 //This is for testing sdjvn

@@ -14,17 +14,15 @@ on:
 
 jobs:
   eslint:
-    name: ESLint
+    name: PHPCS Codesniffer
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: technote-space/get-diff-action@v6
         with:
           PATTERNS: |
-            +(src|__tests__)/**/*.ts
-          FILES: |
-            yarn.lock
-            .eslintrc
+            +(app)/**
+
       - name: Install Package dependencies
         run: yarn install
         if: env.GIT_DIFF
