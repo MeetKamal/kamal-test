@@ -20,6 +20,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2  # OR "2" -> To retrieve the preceding commit.
+          path: project
 
       - name: Create Standard Directory
         shell: bash
@@ -42,18 +43,26 @@ jobs:
         with:
           files: app/**.php # Alternatively using: `docs/**` or `docs`
 
-      - name: Check for changes
-        id: checkForChanges
-        run: |
-          echo "::set-output name=grepValue::$( git diff --name-only ${{ github.event.before }} ${{ github.sha }}  )"
 
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Get Changed Files
+        shell: bash
+        working-directory: project
+        id: changed-lines
+        run: echo "files=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.push.base.sha }} ${{ github.sha }} | xargs)" >> $GITHUB_OUTPUT
+        if: github.event_name == 'push'
+
+      - name: get lines
+        shell: bash
+        id: lines
+        run: echo "$(git diff HEAD^ HEAD)"
+
       - name: Get changed lines
         id: changedLines
         run: |
-          CHANGED_LINES=$(git diff --unified=0 HEAD~1 HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' | wc -l)
+          CHANGED_LINES=$(git diff HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' | wc -l)
           echo "Changed lines: $CHANGED_LINES"
 
       - name: Run step if any file(s) in the docs folder change
