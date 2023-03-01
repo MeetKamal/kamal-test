@@ -54,8 +54,8 @@ jobs:
         shell: bash
         id: lines
         run: |
-          $(git diff HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' | wc -l) > changed-files.txt
-          cat changed-files.txt
+          CHANGED_LINES=$(git diff HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g')
+          echo "Changed lines: $CHANGED_LINES"
 
       - name: Get changed lines
         id: changedLines
