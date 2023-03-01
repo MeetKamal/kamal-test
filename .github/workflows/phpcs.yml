@@ -53,7 +53,7 @@ jobs:
       - name: Get changed code
         shell: bash
         run: |
-          git diff --unified=1 --name-only HEAD^ HEAD > changed_files.txt
+          $(git diff HEAD^ HEAD) > changed_files.txt
           cat changed_files.txt
 
       - name: get lines
