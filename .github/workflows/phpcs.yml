@@ -47,12 +47,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
+          files: app/**.php
           path: project
 
       - name: get lines
         shell: bash
         id: lines
-        run: echo "$(git diff HEAD^ HEAD)"
+        run: |
+          CHANGED_LINES=$(git diff --unified=0 HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' | wc -l)
+          echo "Changed lines: $CHANGED_LINES"
 
       - name: Get changed lines
         id: changedLines
