@@ -14,20 +14,77 @@ on:
 
 jobs:
   eslint:
-    name: PHPCS Codesniffer
+    name: ESLint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: technote-space/get-diff-action@v6
+        - uses: actions/checkout@v2
+        - uses: technote-space/get-diff-action@v6
         with:
           PATTERNS: |
             +(app)/**
 
       - name: Install Package dependencies
-        shell: bash
         run: yarn install
         if: env.GIT_DIFF
-
       - name: Check code style
-        run: echo ${{env.GIT_DIFF}}
+        # Check only source files with differences
+        run: yarn eslint ${{ env.GIT_DIFF_FILTERED }}  # e.g. yarn eslint 'src/main.ts' '__tests__/test.ts'
+        if: env.GIT_DIFF && !env.MATCHED_FILES
+      - name: Check code style
+        # Check only if there are differences in the source code (Run a lint on all files if there are changes to yarn.lock or .eslintrc)
+        run: yarn lint
         if: env.GIT_DIFF && env.MATCHED_FILES
+
+  build:
+    runs-on: ubuntu-latest  # windows-latest | macos-latest
+    name: Test changed-files
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # OR "2" -> To retrieve the preceding commit.
+
+      - name: Create Standard Directory
+        shell: bash
+        run: mkdir standard
+
+      - name: Install Coding Standard
+        shell: bash
+        working-directory: standard
+        run: composer require "magento/magento-coding-standard"
+
+      - name: Register Coding Standard
+        shell: bash
+        working-directory: standard
+        run: vendor/bin/phpcs --config-set installed_paths ${{ github.workspace }}/standard/vendor/magento/magento-coding-standard,${{ github.workspace }}/standard/vendor/phpcompatibility/php-compatibility
+
+      # Example 2
+      - name: Get changed files in the app folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v35
+        with:
+          files: app/**.php # Alternatively using: `docs/**` or `docs`
+
+      - name: Check for changes
+        id: checkForChanges
+        run: |
+          echo "::set-output name=grepValue::$( git diff --name-only ${{ github.event.before }} ${{ github.sha }}  )"
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get changed lines
+        id: changedLines
+        run: |
+          git fetch origin
+          CHANGED_LINES=$(git diff --unified=0 HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' | wc -l)
+          echo "Changed lines: $CHANGED_LINES"
+
+      - name: Run step if any file(s) in the docs folder change
+        shell: bash
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo "One or more files in the docs folder has changed."
+          for file in ${{ steps.changed-files-specific.outputs.all_changed_files }}; do
+            php ../standard/vendor/bin/phpcs $file
+            echo "$file was changed"
+          done
