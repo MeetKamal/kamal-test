@@ -50,6 +50,12 @@ jobs:
           files: app/**.php
           path: project
 
+      - name: Get changed code
+        shell: bash
+        run: |
+          git diff --unified=1 --name-only HEAD^ HEAD > changed_files.txt
+          cat changed_files.txt
+
       - name: get lines
         shell: bash
         id: lines
