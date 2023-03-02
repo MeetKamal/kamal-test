@@ -52,6 +52,7 @@ jobs:
 
       - name: Get changed code
         shell: bash
+        id: lines1
         run: |
           $(git diff --unified=0 HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g') > changed_files.txt
           cat changed_files.txt
