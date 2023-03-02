@@ -54,7 +54,7 @@ jobs:
         id: lines1
         run: |
           git diff --unified=0 HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' > changed_files.txt
-          php ../../standard/vendor/bin/phpcs --standard=PSR2 changed_files.txt
+          php vendor/bin/phpcs --standard=PSR2 changed_files.txt
 
       - name: get lines
         shell: bash
