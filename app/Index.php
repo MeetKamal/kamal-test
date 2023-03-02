@@ -46,6 +46,9 @@ public function getConfig()
 {
     echo "11";
 
+    echo "111";
+    echo "sdasda sd";
+
 
 
     echo "dsd s ";
