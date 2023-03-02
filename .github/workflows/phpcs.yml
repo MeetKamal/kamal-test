@@ -53,8 +53,8 @@ jobs:
         shell: bash
         id: lines1
         run: |
-          git diff ${{steps.changed-files-specific.outputs.all_modified_files}} | grep -v '^@@' | sed 's/^[-+ ]*//g' > changed_files.txt
-          echo "111"
+          git diff --unified=0 HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' > changed_files.txt
+          echo "111 22"
           cat changed_files.txt
 
       - name: get lines
