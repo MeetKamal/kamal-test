@@ -24,16 +24,16 @@ jobs:
 
       - name: Create Standard Directory
         shell: bash
-        run: mkdir standard
+        run: mkdir demo
 
       - name: Install Coding Standard
         shell: bash
-        working-directory: standard
+        working-directory: demo
         run: composer require "magento/magento-coding-standard"
 
       - name: Register Coding Standard
         shell: bash
-        working-directory: standard
+        working-directory: demo
         run: vendor/bin/phpcs --config-set installed_paths ${{ github.workspace }}/standard/vendor/magento/magento-coding-standard,${{ github.workspace }}/standard/vendor/phpcompatibility/php-compatibility
 
       # Example 2
