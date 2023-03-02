@@ -65,6 +65,7 @@ public function getConfig()
 
 
     echo "dsds";
+    echo "sdd";
 
 	
 //This is for testing sdjvn
