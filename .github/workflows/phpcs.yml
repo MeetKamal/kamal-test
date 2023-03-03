@@ -49,8 +49,11 @@ jobs:
         with:
           path: project
 
-      - name: Run Shell Script
-        run: sh changed-lines.sh app/Index.php
+      - name: Run script file
+        run: |
+          chmod +x ./changed-lines.sh
+          ./changed-lines.sh app/Index.php
+        shell: bash
 
       - name: Get changed code
         shell: bash
