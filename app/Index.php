@@ -55,6 +55,7 @@ public function getConfig()
 
     .
     echo "sdasda sd new";
+
     echo "sdasda sd new";
 
     falsef
