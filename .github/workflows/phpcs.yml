@@ -19,9 +19,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run script file
         run: |
-          chmod +x ./changed-lines.sh
-          /bin/bash ./changed-lines.sh
-        shell: bash
+          chmod +x ./demo.sh
+          ./demo.sh
+          shell: bash
 
   build:
     runs-on: ubuntu-latest  # windows-latest | macos-latest
