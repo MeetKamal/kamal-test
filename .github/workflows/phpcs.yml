@@ -52,7 +52,7 @@ jobs:
       - name: Run script file
         run: |
           chmod +x ./changed-lines.sh
-          ./changed-lines.sh app/Index.php
+          sh ./changed-lines.sh app/Index.php
         shell: bash
 
       - name: Get changed code
