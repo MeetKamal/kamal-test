@@ -19,8 +19,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run script file
         run: |
-          chmod +x ./changed-lines.sh
-          sh ./changed-lines.sh app/Index.php
+          chmod +x changed-lines.sh
+          sh changed-lines.sh app/Index.php
         shell: bash
 
   build:
