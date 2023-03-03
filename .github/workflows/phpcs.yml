@@ -51,7 +51,7 @@ jobs:
 
       - name: Run Shell Script
         shell: bash
-        run: sh ./changed-lines.sh app/Index.php
+        run: sh changed-lines.sh app/Index.php
 
       - name: Get changed code
         shell: bash
