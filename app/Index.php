@@ -51,8 +51,8 @@ public function getConfig()
 
     echo "dsd s ";
     echo "dsd s ";
-    echo "111 new";
-    echo "sdasda sd new";
+
+
     .
     echo "sdasda sd new";
     echo "sdasda sd new";
