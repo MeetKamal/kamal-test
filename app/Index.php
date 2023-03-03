@@ -64,13 +64,7 @@ public function getConfig()
     echo "dsd s ";
     echo "dsdsd";
     echo "dsdsd";
-    echo "fff";
-
-    echo "dsdsd";
-    echo "dsdsd";
-    echo "fff";
-    echo "dsdsd";
-    echo "dsdsd";
+    echo "sdsd sadsadas sdsd";
     echo "fff";
 
 
