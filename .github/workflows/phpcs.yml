@@ -20,7 +20,7 @@ jobs:
       - name: Run script file
         run: |
           chmod +x changed-lines.sh
-          sh changed-lines.sh app/Index.php
+          /bin/bash ./changed-lines.sh
         shell: bash
 
   build:
