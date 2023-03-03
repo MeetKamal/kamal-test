@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run script file
         run: |
-          chmod +x ./demo.sh
+          chmod +x ./demo.sh app/Index.php
           ./demo.sh
           shell: bash
 

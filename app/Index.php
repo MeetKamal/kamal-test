@@ -54,8 +54,12 @@ public function getConfig()
     echo "111 new";
     echo "sdasda sd new";
     .
+    echo "sdasda sd new";
+    echo "sdasda sd new";
+
     falsef
     foreach ( as $item) {
+
         
     }
       echo "sdasda sd new";
