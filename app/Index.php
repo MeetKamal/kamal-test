@@ -167,9 +167,16 @@ return $ExtrafeeConfig;
     }
 
     public function test() {
+        echo "test 111 ddd";
+    }
+
+    public function test123() {
         echo "test 111";
     }
 
+    public function test123456() {
+        echo "test 111";
+    }
 
 
 }
