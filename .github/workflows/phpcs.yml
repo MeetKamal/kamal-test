@@ -34,32 +34,18 @@ jobs:
       - name: Register Coding Standard
         shell: bash
         working-directory: demo
-        run: vendor/bin/phpcs --config-set installed_paths ${{ github.workspace }}/standard/vendor/magento/magento-coding-standard,${{ github.workspace }}/standard/vendor/phpcompatibility/php-compatibility
-
-      # Example 2
-      - name: Get changed files in the app folder
-        id: changed-files-specific
-        uses: tj-actions/changed-files@v35
-        with:
-          files: app/**.php # Alternatively using: `docs/**` or `docs`
-
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          path: project
-
+        run: vendor/bin/phpcs --config-set installed_paths ${{ github.workspace }}/demo/vendor/magento/magento-coding-standard,${{ github.workspace }}/demo/vendor/phpcompatibility/php-compatibility
 
       - name: Get changed code
         shell: bash
         id: lines1
         run: |
-          git diff --unified=0 HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' > changed_files.txt
+          git diff --unified=0 HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' > ${{ github.workspace }}/demo/changed_files.txt
           echo "111 22"
 
       - name: Changed Files.txt
         shell: bash
         id: cat-file
-        run: cat changed-files.txt
+        run: cat ${{ github.workspace }}/demo/changed-files.txt
 
 
