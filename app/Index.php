@@ -166,17 +166,10 @@ return $ExtrafeeConfig;
         ;
     }
 
-
-
-    public function testData233() {
-        echo "Dsdsd"
-        ewewe
-        ee
-        3
-        echo "sdsdd   "
-
-
-
-        ;
+    public function test() {
+        echo "test 111";
     }
+
+
+
 }
