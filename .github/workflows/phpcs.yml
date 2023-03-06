@@ -52,19 +52,11 @@ jobs:
         run: |
           echo 'files=$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)")' >> $GITHUB_OUTPUT
 
-      - name: Changed Files.txt
-        shell: bash
-        working-directory: demo
-        id: cat-file
-        run: vendor/bin/phpcs --standard=PSR2 "${{steps.changed.outputs.files}}"
 
       - name: Create file
         run: |
           printf "Hello\nWorld\n" > hw.txt
 
-      - name: Create file
-        run: |
-          echo "${{steps.changed.outputs.files}}"  > other.txt
 
 
       - name: Show file content
@@ -72,5 +64,4 @@ jobs:
           pwd
           ls -la
           cat hw.txt
-          cat other.txt
 
