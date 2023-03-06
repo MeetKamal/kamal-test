@@ -36,17 +36,26 @@ jobs:
         working-directory: demo
         run: vendor/bin/phpcs --config-set installed_paths ${{ github.workspace }}/demo/vendor/magento/magento-coding-standard,${{ github.workspace }}/demo/vendor/phpcompatibility/php-compatibility
 
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow1" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
+
       - name: Get Changed
         shell: bash
         working-directory: demo
         id: changed
         run: |
-          echo "::set-output name=DIFFDATA::$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v '^@@' | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)')"
+          echo "files=$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v '^@@' | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)')" >> $GITHUB_OUTPUT
           
 
       - name: Changed Files.txt
         shell: bash
         id: cat-file
-        run: echo ${{steps.changed.outputs.DIFFDATA}}
+        run: echo "${{steps.changed.outputs.files}}"
 
 
