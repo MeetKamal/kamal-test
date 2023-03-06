@@ -47,6 +47,6 @@ jobs:
       - name: Changed Files.txt
         shell: bash
         id: cat-file
-        run: echo ${{ steps.changed.outputs.files }}
+        run: cat ${{ steps.changed.outputs.files }}
 
 
