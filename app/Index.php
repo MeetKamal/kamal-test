@@ -60,7 +60,8 @@ public function getConfig()
     echo "sdasda sd new";   echo "sdasda sd new";
     echo "sdasda sd new"; echo "sdasda sd new"; echo "sdasda sd new";
     echo "sdasdad";
-
+.
+    echo "dsd s ";
 
     falsef
     foreach ( as $item) {
