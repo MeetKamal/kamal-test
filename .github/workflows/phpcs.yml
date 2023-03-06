@@ -58,13 +58,19 @@ jobs:
         id: cat-file
         run: vendor/bin/phpcs --standard=PSR2 "${{steps.changed.outputs.files}}"
 
-      - name: Add content in File
-        uses: finnp/create-file-action@master
-        env:
-          FILE_NAME: "app/demo.txt"
-          FILE_DATA: "${{steps.changed.outputs.files}}"
+      - name: Create file
+        run: |
+          printf "Hello\nWorld\n" > hw.txt
 
-      - name: Cat new file
-        shell: bash
-        run: cat "app/demo.txt"
+      - name: Create file
+        run: |
+          echo ${{steps.changed.outputs.files}}  > other.txt
+
+
+      - name: Show file content
+        run: |
+          pwd
+          ls -la
+          cat hw.txt
+          cat other.txt
 
