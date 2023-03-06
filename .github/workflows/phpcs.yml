@@ -13,16 +13,6 @@ on:
       - main
 
 jobs:
-  run_tests:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run script file
-        run: |
-          chmod +x ./demo.sh
-          ./demo.sh
-          shell: bash
-
   build:
     runs-on: ubuntu-latest  # windows-latest | macos-latest
     name: Test changed-files
@@ -59,11 +49,6 @@ jobs:
         with:
           path: project
 
-      - name: Run script file
-        run: |
-          chmod +x changed-lines.sh
-          sh changed-lines.sh app/Index.php
-        shell: bash
 
       - name: Get changed code
         shell: bash
@@ -71,4 +56,10 @@ jobs:
         run: |
           git diff --unified=0 HEAD^ HEAD | grep -v '^@@' | sed 's/^[-+ ]*//g' > changed_files.txt
           echo "111 22"
-          cat changed_files.txt
+
+      - name: Changed Files.txt
+        shell: bash
+        id: cat-file
+        run: cat changed-files.txt
+
+

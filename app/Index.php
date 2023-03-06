@@ -50,14 +50,12 @@ public function getConfig()
     echo "sdasda sd";
 
     echo "dsd s ";
+
+
     echo "dsd s ";
-
-
-
-
-    .
     echo "sdasda sd new";
 
+    echo "sdasda sd new";   echo "sdasda sd new";
     echo "sdasda sd new";
 
 
