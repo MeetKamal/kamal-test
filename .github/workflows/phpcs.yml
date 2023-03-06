@@ -55,7 +55,7 @@ jobs:
 
       - name: Create file
         run: |
-          printf "Hello\nWorld\n" > hw.txt
+          printf "$GITHUB_OUTPUT" > hw.txt
 
 
 
