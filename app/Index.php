@@ -62,6 +62,11 @@ public function getConfig()
     echo "sdasdad";
 .
     echo "dsd s ";
+    echo "dsd s ";
+    .
+    echo "dsd s ";
+    echo "dsd s ";
+
 
     falsef
     foreach ( as $item) {

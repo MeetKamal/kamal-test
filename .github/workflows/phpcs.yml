@@ -40,7 +40,7 @@ jobs:
         shell: bash
         id: lines1
         run: |
-          git diff --unified=0 ../../app HEAD^ HEAD | grep -v '^@@' | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)' > ${{ github.workspace }}/demo/changed_files.txt
+          git diff --unified=0 ../../app | grep -v '^@@' | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)' > ${{ github.workspace }}/demo/changed_files.txt
           echo "111 22"
           vendor/bin/phpcs ${{ github.workspace }}/demo/changed_files.txt
 
