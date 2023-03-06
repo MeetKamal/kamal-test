@@ -39,15 +39,15 @@ jobs:
       - name: Get Changed
         shell: bash
         working-directory: demo
-        id: lines1
+        id: changed-files
         run: |
-          git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v '^@@' | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)' > ${{ github.workspace }}/demo/changed_files.txt
+          echo "files=$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v '^@@' | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)' | xargs)" >> $GITHUB_OUTPUT
           echo "111 22"
-          cat ${{ github.workspace }}/demo/changed_files.txt
+          cat $GITHUB_OUTPUT
 
       - name: Changed Files.txt
         shell: bash
         id: cat-file
-        run: cat ${{ github.workspace }}/demo/changed-files.txt
+        run: cat ${{ github.event_name == 'push' && steps.changed-files.outputs.files }}
 
 
