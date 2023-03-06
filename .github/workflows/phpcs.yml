@@ -42,8 +42,7 @@ jobs:
         id: changed-files
         run: |
           echo "files=$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v '^@@' | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)' | xargs)" >> $GITHUB_OUTPUT
-          echo "111 22"
-          cat $GITHUB_OUTPUT
+          echo "111 22"         
 
       - name: Changed Files.txt
         shell: bash
