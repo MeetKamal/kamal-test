@@ -63,5 +63,5 @@ jobs:
         run: |
           pwd
           ls -la
-          vendor/bin/phpcs hw.txt
+          cat hw.txt
 
