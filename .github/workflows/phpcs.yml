@@ -54,6 +54,7 @@ jobs:
 
       - name: Changed Files.txt
         shell: bash
+        working-directory: demo
         id: cat-file
         run: vendor/bin/phpcs --standard=PSR2 "${{steps.changed.outputs.files}}"
 
