@@ -41,11 +41,11 @@ jobs:
         working-directory: demo
         id: changed
         run: |
-          git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)" >> $GITHUB_OUTPUT
+          git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v '^@@' | grep '^[+]' | grep -Ev '^(--- a/|\+\+\+ b/)' >> $GITHUB_OUTPUT
         
       - name: Changed Files.txt
         shell: bash
         id: cat-file
-        run: cat $GITHUB_OUTPUT
+        run: echo $GITHUB_OUTPUT
 
 
