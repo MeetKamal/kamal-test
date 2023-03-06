@@ -41,12 +41,12 @@ jobs:
         working-directory: demo
         id: changed
         run: |
-          echo 'files=$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)")' >> $GITHUB_OUTPUT
+          'files=$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)")' >> $env:GITHUB_OUTPUT
         
 
       - name: Changed Files.txt
         shell: bash
         id: cat-file
-        run: cat ${{ steps.changed.outputs.files }}
+        run: echo ${{ steps.changed.outputs.files }}
 
 
