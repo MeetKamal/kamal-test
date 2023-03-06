@@ -64,7 +64,7 @@ jobs:
 
       - name: Create file
         run: |
-          echo ${{steps.changed.outputs.files}}  > other.txt
+          echo "${{steps.changed.outputs.files}}"  > other.txt
 
 
       - name: Show file content
