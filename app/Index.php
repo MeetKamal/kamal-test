@@ -134,4 +134,9 @@ $ExtrafeeConfig['show_hide_Extrafee_block'] = ($enabled && ($minimumOrderAmount 
 $ExtrafeeConfig['show_hide_Extrafee_shipblock'] = ($enabled && ($minimumOrderAmount <= $subtotal)) ? true : false;
 return $ExtrafeeConfig;
     }
+
+    public function testData() {
+        echo "Dsdsd"
+        echo "sdsdd   "  ;
+    }
 }
