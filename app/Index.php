@@ -206,5 +206,8 @@ return $ExtrafeeConfig;
         echo "test 111";
     }
 
+    public function test1236() {
+        echo "test 111";
+    }
 
 }
