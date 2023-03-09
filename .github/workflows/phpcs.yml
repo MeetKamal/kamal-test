@@ -53,5 +53,13 @@ jobs:
           echo 'files=$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)")' 
           echo "${{steps.changed.outputs.files}}" > hw1.txt
           cat hw1.txt
+
+      - name: Get Changed
+        shell: bash
+        working-directory: demo
+        id: file-write
+        run: |
+          echo "TEst 1" > hw1.txt
+          cat hw1.txt
   
 
