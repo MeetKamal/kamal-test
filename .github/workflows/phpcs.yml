@@ -50,9 +50,8 @@ jobs:
         working-directory: demo
         id: changed
         run: |
-         echo "$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)")" > $GITHUB_OUTPUT
-         echo "$GITHUB_OUTPUT" > hw1.txt
-         cat hw1.txt
+          echo 'files=$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)")' 
+          echo ${{steps.changed.outputs.files}}
 
       - name: Show file content
         run: |
