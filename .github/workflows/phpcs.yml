@@ -52,6 +52,7 @@ jobs:
         run: |
          $(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)") >> $GITHUB_OUTPUT
          echo "$GITHUB_OUTPUT" > hw1.txt
+         cat hw1.txt
 
       - name: Show file content
         run: |
