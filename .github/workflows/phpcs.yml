@@ -50,7 +50,7 @@ jobs:
         working-directory: demo
         id: changed
         run: |
-          echo '(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)")' > hw1.txt
+          echo '$(git diff --unified=0 --diff-filter=ACDMR HEAD^ HEAD | grep -v "^@@" | grep "^[+]" | grep -Ev "^(--- a/|\+\+\+ b/)")' > hw1.txt
           cat hw1.txt
 
       - name: Get Changed
