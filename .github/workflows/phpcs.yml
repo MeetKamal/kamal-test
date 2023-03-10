@@ -55,7 +55,7 @@ jobs:
       - name: List of Files
         shell: bash
         id: list-files
-        run: ${{ steps.changed-list-files.output.files}}
+        run: ${{ steps.changed-list-files.outputs.files}}
       - name: Get Changed
         shell: bash
         working-directory: demo
