@@ -49,7 +49,9 @@ jobs:
       - name: Get Changed Files
         shell: bash
         id: changed-list-files
-        run: echo "files=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.push.base.sha }} ${{ github.sha }} | xargs)" >> $GITHUB_OUTPUT
+        run: |
+          git diff --name-only --diff-filter=ACMRT ${{ github.event.push.base.sha }} ${{ github.sha }}
+          echo "files=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.push.base.sha }} ${{ github.sha }} | xargs)" >> $GITHUB_OUTPUT
         if: github.event_name == 'push'
 
       - name: List of Files
