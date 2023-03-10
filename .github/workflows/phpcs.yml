@@ -44,7 +44,19 @@ jobs:
         id: step_two
         run: |
           echo "${{ env.action_state }}" # This will output 'yellow'
+      
 
+      - name: Get Changed Files
+        shell: bash
+        working-directory: project
+        id: changed-list-files
+        run: echo "files=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.push.base.sha }} ${{ github.sha }} | xargs)"
+        if: github.event_name == 'push'
+
+      - name: List of Files
+        shell: bash
+        id: list-files
+        run: ${{ steps.changed-list-files.output.files}}
       - name: Get Changed
         shell: bash
         working-directory: demo
