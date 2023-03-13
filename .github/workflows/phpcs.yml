@@ -74,10 +74,10 @@ jobs:
         shell: bash
         run: |
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
-                echo (git checkout ${{ github.event.before }} $file) > oldfile.txt
+                echo "$(git checkout ${{ github.event.before }} $file)" > oldfile.txt
                 cat oldfile.txt
                 echo "$file was changed"
-                echo (git checkout $file) > newfile.txt
+                echo "$(git checkout $file)" > newfile.txt
                 cat newfile.txt
             done
 
