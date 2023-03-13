@@ -51,13 +51,13 @@ jobs:
         name: Checkout ${{ github.event_name != 'pull_request' && 'main' || github.event.push.head.ref }}
         with:
           ref: ${{ github.event_name != 'pull_request' && 'main' || github.event.push.head.ref }}
-          fetch-depth: 0
+          fetch-depth: 2
 
 
       - name: List changed files Before
         shell: bash
         run: |
-          for file in ${{ steps.changed-files-before.outputs }}; do
+          for file in ${{ steps.changed-files-before }}; do
             cat $file
             echo "$file old changed"
           done
