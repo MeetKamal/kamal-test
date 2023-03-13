@@ -47,7 +47,6 @@ jobs:
       
 
       - uses: actions/checkout@v2
-        shell: bash
         id: changed-files-before
         name: Checkout ${{ github.event_name != 'pull_request' && 'main' || github.event.push.head.ref }}
         with:
