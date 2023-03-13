@@ -73,13 +73,9 @@ jobs:
       - name: List changed files
         shell: bash
         run: |
+            git fetch origin main
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
-                cat $(git checkout $file)
-                echo "$(git checkout ${{ github.event.before }} $file)" > oldfile.txt
-                cat oldfile.txt
-                echo "$file was changed"
-                echo "$(git checkout $file)" > newfile.txt
-                cat newfile.txt
+                echo "$( git fetch origin ${{ github.event.before }} $file)"
             done
 
       - name: Get Changed Files
