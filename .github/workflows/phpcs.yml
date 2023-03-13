@@ -76,12 +76,17 @@ jobs:
           ref: ${{ github.event_name != 'push' && 'main' || github.event.push.head.ref }}
           fetch-depth: 0
 
+      - name: Prev Commit id
+        shell: bash
+        id: prev-cmt-id
+        run: echo 'prev-cmt="$(git log -1 --format='%H')"'
+
+
       - name: List changed files
         shell: bash
         run: |
-            echo "$(git log -1 --format='%H')"
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
-                echo "$( git checkout (git log -1 --format='%H') $file)"
+                echo "$( git checkout ${{ steps.prev-cmt-id.output.prev-cmt}} $file)"
             done
 
       - name: Get Changed Files
