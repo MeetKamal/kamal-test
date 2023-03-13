@@ -79,14 +79,15 @@ jobs:
       - name: Prev Commit id
         shell: bash
         id: prev-cmt-id
-        run: echo 'prev-cmt="$(git log -1 --format='%H')"'
+        run: echo "prev-cmt=$(git log -1 --format='%H')"
 
 
       - name: List changed files
         shell: bash
         run: |
+            echo ${{ steps.prev-cmt-id.outputs.prev-cmt}}
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
-                echo "$( git checkout ${{ steps.prev-cmt-id.output.prev-cmt}} $file)"
+                echo "$( git checkout ${{ steps.prev-cmt-id.outputs.prev-cmt}} $file)"
             done
 
       - name: Get Changed Files
