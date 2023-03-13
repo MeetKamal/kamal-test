@@ -73,7 +73,6 @@ jobs:
       - name: List changed files
         shell: bash
         run: |
-            git fetch origin main
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
                 echo "$( git fetch origin ${{ github.event.before }} $file)"
             done
