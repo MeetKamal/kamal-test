@@ -79,7 +79,7 @@ jobs:
       - name: List changed files
         shell: bash
         run: |
-            echo $(git log -1 --format='%H')
+            echo "$(git log -1 --format='%H')"
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
                 echo "$( git checkout (git log -1 --format='%H') $file)"
             done
