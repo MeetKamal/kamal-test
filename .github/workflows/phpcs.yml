@@ -57,7 +57,7 @@ jobs:
       - name: List changed files Before
         shell: bash
         run: |
-          echo ${{ github.event.pull_request.base.ref }}
+          echo ${{ github.event.push.base.ref }}
           for file in ${{ steps.changed-files-before }}; do
             cat $file
             echo "$file old changed"
