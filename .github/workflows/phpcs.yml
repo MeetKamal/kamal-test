@@ -63,7 +63,6 @@ jobs:
 
       - name: List changed files
         shell: bash
-        working-directory: demo
         run: |
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
                 git checkout HEAD~1 $file
