@@ -86,6 +86,7 @@ jobs:
         run: |
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
                 echo $file
+                echo "$(git remote show origin)"
                 git checkout ${{ steps.prev-cmt-id.outputs.prev-cmt}} $file
                 echo "$( git checkout ${{ steps.prev-cmt-id.outputs.prev-cmt}} $file)" > old1.txt
                 cat old1.txt
