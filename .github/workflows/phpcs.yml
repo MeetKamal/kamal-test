@@ -72,16 +72,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Get File from Previous Commit
-        run: |
-          git checkout HEAD~1 path/to/file.txt
-          cp path/to/file.txt $GITHUB_WORKSPACE/file.txt
-          shell: bash
-
-      - name: Print File Contents
-        run: |
-          cat $GITHUB_WORKSPACE/file.txt
-
       - uses: actions/checkout@v2
         id: new-changes
         name: Checkout ${{ github.event_name != 'push' && 'main' || github.event.push.head.ref }}
