@@ -69,6 +69,19 @@ jobs:
               echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
           fi
 
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Get File from Previous Commit
+        run: |
+          git checkout HEAD~1 path/to/file.txt
+          cp path/to/file.txt $GITHUB_WORKSPACE/file.txt
+          shell: bash
+
+      - name: Print File Contents
+        run: |
+          cat $GITHUB_WORKSPACE/file.txt
+
       - uses: actions/checkout@v2
         id: new-changes
         name: Checkout ${{ github.event_name != 'push' && 'main' || github.event.push.head.ref }}
@@ -85,11 +98,9 @@ jobs:
         shell: bash
         run: |
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
-                echo $file
-                echo "$(git remote show origin)"
-                git checkout ${{ steps.prev-cmt-id.outputs.prev-cmt}} $file
-                echo "$( git checkout ${{ steps.prev-cmt-id.outputs.prev-cmt}} $file)" > old1.txt
-                cat old1.txt
+                git checkout HEAD~1 $file
+                cp $file $GITHUB_WORKSPACE/file.txt
+                cat $GITHUB_WORKSPACE/file.txt
             done
 
 
