@@ -63,10 +63,11 @@ jobs:
 
       - name: List changed files
         shell: bash
+        working-directory: demo
         run: |
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
                 git checkout HEAD~1 $file
-                ../../standard/vendor/bin/phpcs --report=code $file
+                vendor/bin/phpcs --report=code $file
                 cp $file $GITHUB_WORKSPACE/file.txt
                 cat $GITHUB_WORKSPACE/file.txt
             done
