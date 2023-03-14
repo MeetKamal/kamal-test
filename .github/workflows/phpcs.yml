@@ -81,14 +81,12 @@ jobs:
         id: prev-cmt-id
         run: echo "prev-cmt=$(git log -1 --format='%H')" >> $GITHUB_OUTPUT
 
-
-
       - name: List changed files
         shell: bash
         run: |
             for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
                 echo $file
-                echo "$( git fetch origin ${{ steps.prev-cmt-id.outputs.prev-cmt}} $file)" > old1.txt
+                echo "$( git checkout ${{ steps.prev-cmt-id.outputs.prev-cmt}} $file)" > old1.txt
                 cat old1.txt
             done
 
