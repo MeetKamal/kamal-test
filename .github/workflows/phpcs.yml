@@ -19,8 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 2  # OR "2" -> To retrieve the preceding commit.
-
+          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
 
       - name: Create Standard Directory
         shell: bash
@@ -29,7 +28,8 @@ jobs:
       - name: Install Coding Standard
         shell: bash
         working-directory: demo
-        run: composer require "magento/magento-coding-standard"
+        run: |
+          composer require "magento/magento-coding-standard"
 
       - name: Register Coding Standard
         shell: bash
@@ -57,6 +57,7 @@ jobs:
           fi
 
           for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
+            cat $file
             echo $file >> ${{ github.workspace }}/file_lists.txt
           done
           cat ${{ github.workspace }}/file_lists.txt
@@ -71,7 +72,7 @@ jobs:
             git checkout ${{ github.event.after }}
           fi
 
-          for file in ${{ steps.changed-new-files.outputs.latest-files }}; do
+          for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
             cat $file
             echo $file >> ${{ github.workspace }}/file_lists.txt
           done
