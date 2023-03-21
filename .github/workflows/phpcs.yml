@@ -33,6 +33,7 @@ jobs:
           composer require "magento/magento-coding-standard"
           composer config --no-plugins allow-plugins.digitalrevolution/php-codesniffer-baseline true
           composer require --dev "digitalrevolution/php-codesniffer-baseline"
+          git config --global advice.detachedHead false
 
       - name: Register Coding Standard
         shell: bash
