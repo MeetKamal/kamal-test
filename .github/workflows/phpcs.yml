@@ -61,6 +61,48 @@ jobs:
         id: prev-cmt-id
         run: echo "prev-cmt=$(git log -1 --format='%H')" >> $GITHUB_OUTPUT
 
+      - name: Get changed files
+        shell: bash
+        id: changed-new-files
+        run: |
+          if ${{ github.event_name == 'pull_request' }}; then
+            echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
+          else
+            echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
+          fi
+
+      - name: List out changed files
+        shell: bash
+        id: previous-commit-files
+        run: |
+          if ${{ github.event_name == 'pull_request' }}; then
+            git checkout ${{ github.event.pull_request.base.ref }}
+          else
+            git checkout ${{ github.event.before }}
+          fi
+
+          for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
+            echo $file >> ${{ github.workspace }}/file_lists.txt
+          done
+          cat ${{ github.workspace }}/file_lists.txt
+
+      - name: List out changed files
+        shell: bash
+        id: latest-files
+        run: |
+          if ${{ github.event_name == 'pull_request' }}; then
+            git checkout ${{ github.event.pull_request.head.ref }}
+          else
+            git checkout ${{ github.event.after }}
+          fi
+
+          for file in ${{ steps.changed-new-files.outputs.latest-files }}; do
+            cat $file
+            echo $file >> ${{ github.workspace }}/file_lists.txt
+          done
+          cat ${{ github.workspace }}/file_lists.txt
+
+
       - name: List changed files
         shell: bash
         run: |
