@@ -66,64 +66,7 @@ public function getConfig()
     echo "dsd s ";
     echo "dsd s ";
 
-    .
-    echo "dsd s ";
-    echo "dsd s ";
 
-    .
-    echo "dsd s ";
-    echo "dsd s ";
-    .
-    echo "dsd s ";
-    echo "dsd s ";
-
-
-    falsef
-    foreach ( as $item) {
-
-        
-    }
-      echo "sdasda sd new";
- echo "dsd s ";
-          echo "dsd s ";
-    echo "dsd s ";
-    echo "dsdsd";
-    echo "dsdsd";
-    echo "fff";
-    echo "dsdsd";
-    echo "fff";
-    echo "dsdsd";
-    echo "fff";
-    echo "dsdsd";
-    echo "fff";
-
-    echo "dsdsd";
-    echo "fff";
-    echo "dsd s ";
-    echo "dsd s ";
-    echo "dsdsd";
-    echo "dsdsd";
-    echo "sdsd sadsadas sdsd";
-    echo "sd sdasda dsd";
-    echo "fff sdsd sd";
-
-
-    echo "dsdsd";
-    echo "fff";
-
-    echo "dsdsd";
-    echo "fff";
-
-    echo "dsdsd";
-    echo "fff";    echo "dsdsd";
-    echo "fff";
-
-    echo "dsdsd";
-
-    echo "dsds";
-    echo "sdd";
-
-	
 //This is for testing sdjvn
 $ExtrafeeConfig = [];
  $enabled = $this->dataHelper->isModuleEnabled();
@@ -141,6 +84,12 @@ return $ExtrafeeConfig;
         echo "Dsdsd"
         echo "sdsdd   "  ;
     }
+
+    public function testData123() {
+        echo "Dsdsd"
+        echo "sdsdd   "  ;
+    }
+
 
     public function testData2() {
         echo "Dsdsd"
