@@ -78,7 +78,6 @@ jobs:
           fi
 
           for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
-            cat $file
             echo $file >> ${{ github.workspace }}/file_lists.txt
           done
           
