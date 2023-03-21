@@ -75,6 +75,7 @@ jobs:
           grep -i "\.php$" ${{ github.workspace }}/file_lists_old.txt > ${{ github.workspace }}/files_php_old.txt
           cat  ${{ github.workspace }}/files_php_old.txt
           vendor/bin/phpcs --standard=PSR2 --report-file=phpcs.baseline-old.xml --basepath=${{ github.workspace }} --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php_old.txt          
+          cat ${{ github.workspace }}phpcs.baseline-old.xml
 
       - name: List out changed files
         shell: bash
