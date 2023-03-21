@@ -41,31 +41,6 @@ jobs:
         id: changed-new-files
         run: |
           if ${{ github.event_name == 'pull_request' }}; then
-              echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
-          else
-              echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - uses: actions/checkout@v2
-        id: new-changes
-        name: Checkout ${{ github.event_name != 'push' && 'main' || github.event.push.head.ref }}
-        with:
-          ref: ${{ github.event_name != 'push' && 'main' || github.event.push.head.ref }}
-          fetch-depth: 0
-
-      - name: Prev Commit id
-        shell: bash
-        id: prev-cmt-id
-        run: echo "prev-cmt=$(git log -1 --format='%H')" >> $GITHUB_OUTPUT
-
-      - name: Get changed files
-        shell: bash
-        id: changed-new-files
-        run: |
-          if ${{ github.event_name == 'pull_request' }}; then
             echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
           else
             echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
