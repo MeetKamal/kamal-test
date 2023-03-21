@@ -19,7 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
+          fetch-depth: 0
+          path: project # OR "2" -> To retrieve the preceding commit.
 
       - name: Create Standard Directory
         shell: bash
@@ -27,7 +28,7 @@ jobs:
 
       - name: Install Coding Standard
         shell: bash
-        working-directory: demo
+        working-directory: project
         run: |
           composer require "magento/magento-coding-standard"
           composer config --no-plugins allow-plugins.digitalrevolution/php-codesniffer-baseline true
@@ -35,11 +36,12 @@ jobs:
 
       - name: Register Coding Standard
         shell: bash
-        working-directory: demo
+        working-directory: project
         run: vendor/bin/phpcs --config-set installed_paths ${{ github.workspace }}/demo/vendor/magento/magento-coding-standard,${{ github.workspace }}/demo/vendor/phpcompatibility/php-compatibility
 
       - name: Get changed files
         shell: bash
+        working-directory: project
         id: changed-new-files
         run: |
           if ${{ github.event_name == 'pull_request' }}; then
@@ -50,6 +52,7 @@ jobs:
 
       - name: List out changed files
         shell: bash
+        working-directory: project
         id: previous-commit-files
         run: |
           if ${{ github.event_name == 'pull_request' }}; then
@@ -66,6 +69,7 @@ jobs:
 
       - name: List out changed files
         shell: bash
+        working-directory: project
         id: latest-files
         run: |
           if ${{ github.event_name == 'pull_request' }}; then
@@ -82,7 +86,7 @@ jobs:
           
       - name: List out files and Run
         shell: bash
-        working-directory: demo
+        working-directory: project
         run: |
           cat ${{ github.workspace }}/file_lists.txt
           vendor/bin/phpcs --standard=Magento2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_lists.txt --report-file=phpcs.baseline_old.xml
