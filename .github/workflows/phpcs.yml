@@ -63,7 +63,7 @@ jobs:
 
           for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
             cat $file
-            echo $file >> ${{ github.workspace }}/file_lists.txt
+            echo $file >> ${{ github.workspace }}/file_lists_old.txt
           done      
 
       - name: List out files and Run
@@ -71,8 +71,10 @@ jobs:
         id: phpcs_before
         working-directory: project
         run: |
-          grep -i "\.php$" ${{ github.workspace }}/file_lists.txt > ${{ github.workspace }}/files_php.txt
-          vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php.txt          
+          echo "11 23"
+          grep -i "\.php$" ${{ github.workspace }}/file_lists_old.txt > ${{ github.workspace }}/files_php_old.txt
+          cat  ${{ github.workspace }}/files_php_old.txt
+          vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php_old.txt          
 
       - name: List out changed files
         shell: bash
@@ -86,7 +88,7 @@ jobs:
           fi
 
           for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
-            echo $file >> ${{ github.workspace }}/file_lists.txt
+            echo $file >> ${{ github.workspace }}/file_lists_new.txt
           done
 
       - name: List out files and Run
@@ -94,8 +96,9 @@ jobs:
         id: phpcs_after
         working-directory: project
         run: |
-          grep -i "\.php$" ${{ github.workspace }}/file_lists.txt > ${{ github.workspace }}/files_php.txt
-          vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php.txt          
+          echo "456"
+          grep -i "\.php$" ${{ github.workspace }}/file_lists_new.txt > ${{ github.workspace }}/file_php_new.txt
+          vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_new.txt          
       
 
 

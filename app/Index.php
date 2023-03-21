@@ -229,6 +229,9 @@ public function test123456() {
 public function test123456() {
     echo "test 111";
 }
+public function test123456() {
+    echo "test 111";
+}
 
 public function test1234563333() {
     echo "test 111";
