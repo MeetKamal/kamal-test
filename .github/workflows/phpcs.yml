@@ -73,7 +73,7 @@ jobs:
         working-directory: project
         run: |
           grep -i "\.php$" ${{ github.workspace }}/file_lists_old.txt > ${{ github.workspace }}/files_php_old.txt
-          vendor/bin/phpcs src --report-file=phpcs.baseline.xml --standard=PSR2 --basepath=${{ github.workspace }} --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php_old.txt         
+          vendor/bin/phpcs --report-file=phpcs.baseline.xml --standard=PSR2 --basepath=${{ github.workspace }} --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php_old.txt         
           cat ${{ github.workspace }}/phpcs.baseline.xml
 
       - name: List out changed files
