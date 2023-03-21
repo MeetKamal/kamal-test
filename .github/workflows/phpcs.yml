@@ -71,7 +71,6 @@ jobs:
         id: phpcs_before
         working-directory: project
         run: |
-          echo "11 23"
           grep -i "\.php$" ${{ github.workspace }}/file_lists_old.txt > ${{ github.workspace }}/files_php_old.txt
           echo "$(vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php_old.txt)" > phpcs.baseline-old.xml          
           cat phpcs.baseline-old.xml
@@ -98,7 +97,8 @@ jobs:
         run: |
           echo "456"
           grep -i "\.php$" ${{ github.workspace }}/file_lists_new.txt > ${{ github.workspace }}/file_php_new.txt
-          vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_new.txt          
+          echo "$(vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_new.txt)" > phpcs.baseline-old.xml          
+          cat phpcs.baseline-old.xml        
       
 
 
