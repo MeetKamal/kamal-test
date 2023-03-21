@@ -66,6 +66,14 @@ jobs:
             echo $file >> ${{ github.workspace }}/file_lists.txt
           done      
 
+      - name: List out files and Run
+        shell: bash
+        id: phpcs_before
+        working-directory: project
+        run: |
+          grep -i "\.php$" ${{ github.workspace }}/file_lists.txt > ${{ github.workspace }}/files_php.txt
+          vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php.txt          
+
       - name: List out changed files
         shell: bash
         working-directory: project
@@ -80,13 +88,13 @@ jobs:
           for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
             echo $file >> ${{ github.workspace }}/file_lists.txt
           done
-          
+
       - name: List out files and Run
         shell: bash
+        id: phpcs_after
         working-directory: project
         run: |
           grep -i "\.php$" ${{ github.workspace }}/file_lists.txt > ${{ github.workspace }}/files_php.txt
-          cat ${{ github.workspace }}/files_php.txt
           vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php.txt          
       
 
