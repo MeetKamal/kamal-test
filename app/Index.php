@@ -66,6 +66,63 @@ public function getConfig()
     echo "dsd s ";
     echo "dsd s ";
 
+    .
+    echo "dsd s ";
+    echo "dsd s ";
+
+    .
+    echo "dsd s ";
+    echo "dsd s ";
+    .
+    echo "dsd s ";
+    echo "dsd s ";
+
+
+    falsef
+    foreach ( as $item) {
+
+
+    }
+      echo "sdasda sd new";
+ echo "dsd s ";
+          echo "dsd s ";
+    echo "dsd s ";
+    echo "dsdsd";
+    echo "dsdsd";
+    echo "fff";
+    echo "dsdsd";
+    echo "fff";
+    echo "dsdsd";
+    echo "fff";
+    echo "dsdsd";
+    echo "fff";
+
+    echo "dsdsd";
+    echo "fff";
+    echo "dsd s ";
+    echo "dsd s ";
+    echo "dsdsd";
+    echo "dsdsd";
+    echo "sdsd sadsadas sdsd";
+    echo "sd sdasda dsd";
+    echo "fff sdsd sd";
+
+
+    echo "dsdsd";
+    echo "fff";
+
+    echo "dsdsd";
+    echo "fff";
+
+    echo "dsdsd";
+    echo "fff";    echo "dsdsd";
+    echo "fff";
+
+    echo "dsdsd";
+
+    echo "dsds";
+    echo "sdd";
+
 
 //This is for testing sdjvn
 $ExtrafeeConfig = [];
@@ -84,54 +141,6 @@ return $ExtrafeeConfig;
         echo "Dsdsd"
         echo "sdsdd   "  ;
     }
-
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-    public function testData123() {
-        echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }  public function testData123() {
-    echo "Dsdsd"
-        echo "sdsdd   "  ;
-    }
-
 
     public function testData2() {
         echo "Dsdsd"
@@ -185,81 +194,17 @@ return $ExtrafeeConfig;
         echo "test 111";
     }
 
+
+
     public function test123456() {
         echo "test 111";
     }
 
-    public function 1111pqr() {
-        echo "test 111 222";
-    }
-
-    public function pqr() {
-        echo "test 111 222";
-    }
     public function test123456() {
         echo "test 111";
     }
 
-public function test123456() {
-    echo "test 111";
-}    public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-
-public function test123456() {
-    echo "test 111";
-}
-public function test123456() {
-    echo "test 111";
-}
-public function test123456() {
-    echo "test 111";
-}
-
-public function test1234563333() {
-    echo "test 111";
-}
+    public function test123456() {
+        echo "test 111";
+    }
 }
