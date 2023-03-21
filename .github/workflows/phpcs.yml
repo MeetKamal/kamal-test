@@ -89,7 +89,7 @@ jobs:
         working-directory: project
         run: |
           cat ${{ github.workspace }}/file_lists.txt
-          grep '\.php$' ${{ github.workspace }}/file_lists.txt > ${{ github.workspace }}/files_php.txt
+          grep ".*\.php$" ${{ github.workspace }}/file_lists.txt > ${{ github.workspace }}/files_php.txt
           vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/files_php.txt --report-file=phpcs.baseline_old.xml
           cat phpcs.baseline_old.xml
 
