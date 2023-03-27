@@ -11,4 +11,7 @@ function test44() {
 function test4455() {
     test 222;
     }
+function test44535() {
+    test 222;
+    }
 ?>
