@@ -72,7 +72,7 @@ jobs:
         id: phpcs_before
         working-directory: project
         run: |
-          grep -i "\.php$" ${{ github.workspace }}/file_lists_old.txt > ${{ github.workspace }}/files_php_old.txt
+          grep -i "\.php$" ${{ github.workspace }}/file_lists_old.txt >> ${{ github.workspace }}/files_php_old.txt
           # php vendor/bin/phpcs --file-list=${{ github.workspace }}/files_php_old.txt  --standard=PSR2 --report-file=phpcs.baseline.xml --basepath=${{ github.workspace }}
           php vendor/bin/phpcs --standard=PSR2 --file-list=${{ github.workspace }}/files_php_old.txt  --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --report-file=phpcs.baseline.xml --basepath=/
           cat phpcs.baseline.xml
