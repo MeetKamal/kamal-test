@@ -83,7 +83,7 @@ jobs:
         working-directory: project
         run: |
           grep -i "\.php$" ${{ github.workspace }}/file_lists_old.txt > ${{ github.workspace }}/file_php_old.txt
-          echo $(php vendor/bin/phpcs -q --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_old.txt) >> ${{ github.workspace }}/phpcs1.xml
+          echo $(php vendor/bin/phpcs --report-file=phpcs.baseline.xml --basepath=/ --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_old.txt) > ${{ github.workspace }}/phpcs1.xml
           cat ${{ github.workspace }}/phpcs1.xml
 
       - name: List out changed files
@@ -107,7 +107,7 @@ jobs:
         working-directory: project
         run: |
           grep -i "\.php$" ${{ github.workspace }}/file_lists_new.txt > ${{ github.workspace }}/file_php_new.txt
-          echo $(php vendor/bin/phpcs -q --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_new.txt) >> ${{ github.workspace }}/phpcs1.xml
+          echo $(php vendor/bin/phpcs --standard=PSR2 --report-file=phpcs.baseline.xml --basepath=/ --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_new.txt) > ${{ github.workspace }}/phpcs1.xml
           cat ${{ github.workspace }}/phpcs1.xml        
           
 
