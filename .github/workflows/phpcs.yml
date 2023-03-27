@@ -65,6 +65,7 @@ jobs:
           for file in ${{ steps.changed-new-files.outputs.changed_files }}; do
             echo $file >> ${{ github.workspace }}/file_lists_old.txt
           done      
+          cat ${{ github.workspace }}/file_lists_old.txt
 
       - name: List out files and Run
         shell: bash
