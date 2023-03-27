@@ -148,7 +148,8 @@ return $ExtrafeeConfig;
         echo "Dsdsd" ;;
         echo "sdsdd   "  ;
     }
-    public function testData() {
+    public function testData()
+    3{
         echo "Dsdsd" ;;
         echo "sdsdd   "  ;
     }
