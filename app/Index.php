@@ -20,4 +20,7 @@ function test44535() {
 function test44535() {
     echo "test 222 aasas";
 }
+function test44535() {
+    echo "test 222 aasas";
+}
 ?>
