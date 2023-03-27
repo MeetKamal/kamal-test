@@ -83,6 +83,7 @@ jobs:
         working-directory: project
         run: |
           php vendor/bin/phpcs -q --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_lists_old.txt
+          echo "111"
           cat phpcs.baseline-old.xml
 
       - name: List out changed files
