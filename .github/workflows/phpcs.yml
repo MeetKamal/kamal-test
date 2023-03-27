@@ -101,6 +101,7 @@ jobs:
             echo $file >> ${{ github.workspace }}/file_lists_new.txt
           done
 
+
       - name: List out files and Run
         shell: bash
         id: phpcs_after
