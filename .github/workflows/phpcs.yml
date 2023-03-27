@@ -24,7 +24,11 @@ jobs:
 
       - name: Create Standard Directory
         shell: bash
-        run: mkdir demo
+        working-directory: project
+        run: |
+          mkdir demo
+          cd demo
+          echo "" > phpcs.baseline-old.xml 
 
       - name: Install Coding Standard
         shell: bash
