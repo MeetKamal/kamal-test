@@ -28,7 +28,13 @@ jobs:
         run: |
           mkdir demo
           cd demo
-          echo "" > phpcs.baseline-old.xml 
+          echo "111" > phpcs.baseline-old.xml 
+
+      - name: View File
+        shell: bash
+        working-directory: project
+        run: cat demo/phpcs.baseline-old.xml
+
 
       - name: Install Coding Standard
         shell: bash
