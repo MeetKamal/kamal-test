@@ -108,7 +108,7 @@ jobs:
         working-directory: project
         run: |
           grep -i "\.php$" ${{ github.workspace }}/file_lists_new.txt > ${{ github.workspace }}/file_php_new.txt
-          echo $(php vendor/bin/phpcs --standard=PSR2 --report-file=phpcs.baseline.xml --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_new.txt) > ${{ github.workspace }}/phpcs2.xml
+          echo $(php vendor/bin/phpcs --standard=PSR2 --report=\\DR\\CodeSnifferBaseline\\Reports\\Baseline --file-list=${{ github.workspace }}/file_php_new.txt) > ${{ github.workspace }}/phpcs2.xml
           cat ${{ github.workspace }}/phpcs2.xml
           
           
