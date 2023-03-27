@@ -30,4 +30,8 @@ function test44535() {
     cho "dsdsd";
     echo "sdasda ";
 }
+
+function test() {{
+
+}}
 ?>
