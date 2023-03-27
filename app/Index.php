@@ -1,8 +1,7 @@
 <?php
 
-    echo "Test 1";
-    echo "fffff";
-echo "Test 1";
-echo "fffff";
-echo "Test 1";
-echo "fffff";
+    function test() {
+        test 222;
+    }
+
+?>
