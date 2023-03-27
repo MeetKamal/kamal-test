@@ -25,4 +25,7 @@ function test44535() {
 function test() {
 
 }
+function test22() {
+    eee
+}
 ?>
